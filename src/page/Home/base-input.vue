@@ -1,4 +1,3 @@
-
 <template>
   <label>
     <input type="text"
@@ -12,16 +11,16 @@ export default {
   data(){
     return {
       name:"输入框"
-    }
+    };
   },
   computed:{
-    inputListeners:function(){
+    inputListeners:function (){
       var vm = this;
       return Object.assign({},this.$listeners,{
         input:function (event) {
-          vm.$emit('input',event.target.value)
+          vm.$emit('input',event.target.value);
         }
-      })
+      });
     }
   }
 }

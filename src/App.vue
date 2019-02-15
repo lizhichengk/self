@@ -6,17 +6,12 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
   data(){
     return {
       num:0
     }
-  },
-  components: {
-    HelloWorld
   },
   created(){
       sessionStorage.setItem('num',0)

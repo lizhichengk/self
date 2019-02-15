@@ -1,68 +1,81 @@
 <template>
-    <div>
-        <div class='title'><span>{{name}}{{id}}</span></div>
-        <Child :title.sync = 'title' :todos = "list">
-            <template slot-scope="slotProps">
-                <span v-if="slotProps.todo.isComplete">√</span>
-                {{slotProps.todo.text}}
-            </template>
-        </Child>
-        <button @click="update" >点我</button>
-        <baseInput @focus="onFocus"></baseInput>
-        <router-view></router-view>
-    </div>
+  <div>
+    <div class='title'><span>{{name}}{{id}}</span></div>
+      <Child :title.sync="title" :todos="list">
+        <template slot-scope="slotProps">
+          <span v-if="slotProps.todo.isComplete">√</span>
+            {{slotProps.todo.text}}
+        </template>
+      </Child>
+      <button @click="update" >点我</button>
+      <baseInput @focus="onFocus"></baseInput>
+      {{num}}
+      {{getName}}
+      <router-view></router-view>
+  </div>
 </template>
 <script>
 import Child from './Child';
 import baseInput from './base-input';
+import {mapState, mapGetters, mapMutations, mapActions} from 'vuex';
 export default {
-    data(){
-        return {
-            name:'home页面',
-            id:this.$route.params.id,
-            title:'我是HOME',
-            list:[
-                {id:0,text:'我是第一个',isComplete:1},
-                {id:1,text:'我是第二个',isComplete:0},
-                {id:2,text:'我是第三个',isComplete:0},
-            ]
-        }
-    },
-    components: {Child,baseInput},
-    created(){
-    
-    },
-/*     beforeRouteEnter (to, from, next) {
-        const num = sessionStorage.getItem('num')
-        alert(num)
-        if(num){
-        next({ path: '/about' })
+  data(){
+    return {
+      name:'home页面',
+      id:this.$route.params.id,
+      title:'我是HOME',
+      list:[
+        {id:0,text:'我是第一个',isComplete:1},
+        {id:1,text:'我是第二个',isComplete:0},
+        {id:2,text:'我是第三个',isComplete:0},
+      ]
+    };
+  },
+  components: {Child,baseInput},
+  computed:{
+    ...mapState(['num']),
+    ...mapGetters(['getName'])
+  },
+  created(){
+    //this.increment();
+    //this.$store.commit('increment',{string:'111'});
+    //this.$store.dispatch('increment',{num:1});
+    this.increment({name:'asdh'});
+    console.log(this.$store.state.num);
+    //console.log(this.$store.getters.getName);
+  },
+  //   beforeRouteEnter (to, from, next) {
+  //   const num = sessionStorage.getItem('num')
+  //   alert(num)
+  //   if(num){
+  //   next({ path: '/about' })
 
-        }else{
+  //   }else{
 
-        next({ path: '/' })
+  //   next({ path: '/' })
 
-        }
-        
-    在渲染该组件的对应路由被 confirm 前调用
-    不！能！获取组件实例 `this`
-    因为当守卫执行前，组件实例还没被创建
-  }, */
+  // }
+  // 在渲染该组件的对应路由被 confirm 前调用
+  // 不！能！获取组件实例 `this`
+  // 因为当守卫执行前，组件实例还没被创建
+  // }, 
   methods:{
-      'update':function(){
-           this.title += '我是父页面的title'
-      },
-      'onFocus':function(){
-          console.log('父页面监听')
-      }
+    ...mapMutations(['increment']),
+    ...mapActions(['increment']),
+    update:function (){
+      this.title += '我是父页面的title';
+    },
+    onFocus:function (){
+      console.log('父页面监听');
+    }
   }
-}
+};
 </script>
 <style lang="less" scoped>
-    .title{
-        div{
-            color:deepskyblue;
-        }
-    }
+.title{
+  div{
+    color:deepskyblue;
+  }
+}
 </style>
 
