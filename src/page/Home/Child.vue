@@ -9,7 +9,7 @@
             {{todo.text}}
       </slot>
     </div>
-    <!-- 我是master新增加的一次提交 -->
+    我是master新增加的一次提交
   </div>
 
 </template>
