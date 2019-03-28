@@ -1,5 +1,4 @@
-
-export default function Permission (Component) {
+export default function Permission () {
   return {
     mounted () {
       console.log('I have already mounted');
@@ -12,8 +11,7 @@ export default function Permission (Component) {
           vnode.context = this._self //绑定到高阶组件上
           return vnode
         });
-        const vNode = this.$attrs.Permission==='btn' ? Component : '';
-        console.log(vNode);
+        const vNode = this.$attrs.Permission==='btn' ? 'div' : '';
         return h(vNode, {
           on: this.$listeners,
           attrs: this.$attrs,
