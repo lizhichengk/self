@@ -1,22 +1,24 @@
-export default function Permission () {
+export default function Permission() {
   return {
-    mounted () {
+    mounted() {
       console.log('I have already mounted');
     },
-    render (h) {
-      // 将 this.$slots 格式化为数组，因为 h 函数第三个参数是子节点，是一个数组
+    render(h) {
+    // 将 this.$slots 格式化为数组，因为 h 函数第三个参数是子节点，是一个数组
       const slots = Object.keys(this.$slots)
         .reduce((arr, key) => arr.concat(this.$slots[key]), [])
         .map(vnode => {
-          vnode.context = this._self //绑定到高阶组件上
-          return vnode
+          // 绑定到高阶组件上
+          vnode.context = this._self;
+          return vnode;
         });
-        const vNode = this.$attrs.Permission==='btn' ? 'div' : '';
-        return h(vNode, {
-          on: this.$listeners,
-          attrs: this.$attrs,
-          props: this.$props
-        }, slots)
+      const vNode = this.$attrs.Permission === 'btn' ? 'div' : '';
+      return h(vNode, {
+        class: 'permission',
+        on: this.$listeners,
+        attrs: this.$attrs,
+        props: this.$props
+      }, slots);
     }
-  }
+  };
 }
