@@ -15,5 +15,8 @@ export default [
         path:'/about',
         component: resolve => require(['./page/About/About.vue'], resolve)
     },
-    
+    {
+        path:'/list',
+        component: resolve => require(['./page/Home/list.vue'], resolve)
+    },
 ]

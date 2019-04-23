@@ -4,21 +4,21 @@
       v-bind="$attrs"
       v-on="inputListeners"
     >
-  </label>  
+  </label>
 </template>
 <script>
 export default {
-  data(){
+  data() {
     return {
       name:"输入框"
     };
   },
-  computed:{
-    inputListeners:function (){
+  computed: {
+    inputListeners:function () {
       var vm = this;
-      return Object.assign({},this.$listeners,{
-        input:function (event) {
-          vm.$emit('input',event.target.value);
+      return Object.assign({}, this.$listeners, {
+        input: function (event) {
+          vm.$emit('input', event.target.value);
         }
       });
     }

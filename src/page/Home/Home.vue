@@ -19,12 +19,12 @@ import Child from './Child';
 import baseInput from './base-input';
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex';
 export default {
-  data(){
+  data() {
     return {
-      name:'home页面',
-      id:this.$route.params.id,
-      title:'我是HOME',
-      list:[
+      name: 'home页面',
+      id: this.$route.params.id,
+      title: '我是HOME',
+      list: [
         {id:0,text:'我是第一个',isComplete:1},
         {id:1,text:'我是第二个',isComplete:0},
         {id:2,text:'我是第三个',isComplete:0},
@@ -32,11 +32,11 @@ export default {
     };
   },
   components: {Child,baseInput},
-  computed:{
+  computed: {
     ...mapState(['num']),
     ...mapGetters(['getName'])
   },
-  created(){
+  created() {
     //this.increment();
     //this.$store.commit('increment',{string:'111'});
     //this.$store.dispatch('increment',{num:1});
@@ -58,14 +58,14 @@ export default {
   // 在渲染该组件的对应路由被 confirm 前调用
   // 不！能！获取组件实例 `this`
   // 因为当守卫执行前，组件实例还没被创建
-  // }, 
-  methods:{
+  // },
+  methods: {
     ...mapMutations(['increment']),
     ...mapActions(['increment']),
-    update:function (){
+    update:function () {
       this.title += '我是父页面的title';
     },
-    onFocus:function (){
+    onFocus:function () {
       console.log('父页面监听');
     }
   }

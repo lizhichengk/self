@@ -8,19 +8,19 @@
 <script>
 export default {
   name: 'app',
-  data(){
+  data() {
     return {
       num:0
-    }
+    };
   },
-  created(){
-      sessionStorage.setItem('num',0)
-      setTimeout(function(){
-        this.num = 1
-        sessionStorage.setItem('num',this.num)
-      },3000)
+  created() {
+      sessionStorage.setItem('num', 0);
+      setTimeout(function () {
+        this.num = 1;
+        sessionStorage.setItem('num',this.num);
+      }, 3000);
   }
-}
+};
 </script>
 
 <style>

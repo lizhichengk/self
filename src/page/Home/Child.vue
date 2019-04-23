@@ -9,23 +9,22 @@
             {{todo.text}}
       </slot>
     </div>
-  </div> 
-     
+  </div>
 </template>
 <script>
 export default {
-  data(){
+  data() {
     return {
-        name:'home===>Child1111页面'
+        name: 'home===>Child1111页面'
     }
   },
-    props:['title','todos'],
-    methods:{
-      update:function(){
-        this.$emit('update:title',this.title+'我是子页面title')
-      }
+  props: ['title','todos'],
+  methods: {
+    update: function () {
+      this.$emit('update:title', this.title+'我是子页面title');
     }
-}
+  }
+};
 </script>
 <style lang="less" scoped>
 header{

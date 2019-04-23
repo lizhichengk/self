@@ -22,10 +22,10 @@ const store = new Vuex.Store({
   actions:{
     increment({commit, state},payload) {
       console.log(payload);
-      setTimeout(()=>{
+      setTimeout(() => {
         commit('increment');
         console.log(state.num);
-      },1000)
+      }, 1000);
     }
   }
 });
